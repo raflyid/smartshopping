@@ -42,28 +42,21 @@
           <?php if ($title == $sm['title']) : ?>
             <li class=active>
             <?php else : ?>
+            <li class="nav-item">
             <?php endif; ?>
             <a class="nav-link" href="<?= base_url($sm['url']) ?>">
             <i class="<?= $sm['icon']; ?>"></i> 
             <span><?= $sm['title']; ?></span></a>
             </li>
             <?php endforeach ?>
+
+
             <?php endforeach; ?>
             
-            <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Utilities</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="utilities-contact.html">Contact</a></li>
-                <li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li>
-                <li><a href="utilities-subscribe.html">Subscribe</a></li>
-              </ul>
-            </li>            
-            <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
-          </ul>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-            <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-              <i class="fas fa-rocket"></i> Documentation
+            <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger btn-lg btn-block btn-icon-split">
+              </i> Logout
             </a>
           </div>        </aside>
       </div>
