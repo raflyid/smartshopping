@@ -9,8 +9,8 @@ class Admin extends CI_Controller
         // is_logged_in();
     //     // $this->load->model('');
     //     // $this->load->model('');
-    //     // $this->load->helper('form');
-    //     // $this->load->helper('url');
+        $this->load->helper('form');
+        $this->load->helper('url');
     }
 
     public function index()
