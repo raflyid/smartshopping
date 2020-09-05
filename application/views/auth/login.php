@@ -9,7 +9,7 @@
             </div>
             <?= $this->session->flashdata('message'); ?>
             
-            <div class="card card-primary">
+            <div class="card card-primary shadow mb-3">
               <div class="card-header"><h4>Login</h4></div>
 
               <div class="card-body">

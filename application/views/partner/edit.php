@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>">
+                      <input type="text" class="form-control" readonly id="email" name="email" value="<?= $user['email']; ?>">
                       <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
@@ -25,7 +25,8 @@
                       <input type="text" class="form-control" id="phone" name="phone" value="<?= $user['phone'] ?>">
                       <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <a href="#" class="btn btn-primary">Edit profile</a>
+
+                   <button type="submit" class="btn btn-primary">Edit profile</button>
 
                 </div>
             </div>

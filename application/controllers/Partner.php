@@ -5,7 +5,7 @@ class Partner extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        // is_logged_in();
+        is_logged_in();
         // $this->load->model('');
          // $this->load->model('');
         $this->load->helper('form');
@@ -29,6 +29,8 @@ class Partner extends CI_Controller {
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 
         $this->form_validation->set_rules('fullname', 'Fullname', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim');
+        $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
 
         if($this->form_validation->run() == false) {
           $this->load->view('master/header', $data);
@@ -41,7 +43,9 @@ class Partner extends CI_Controller {
           $email = $this->input->post('email');
           $phone = $this->input->post('phone');
           
-          $this->db->set('fullname', $fullname, 'email', $email, 'phone', $phone);
+          $this->db->set('fullname', $fullname);
+          $this->db->set('email', $email);
+          $this->db->set('phone', $phone);
           $this->db->where('email', $email);
           $this->db->update('users');
           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile berhasil di update!</div>');

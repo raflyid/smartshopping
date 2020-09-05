@@ -8,7 +8,7 @@
               
             </div>
 
-            <div class="card card-primary">
+            <div class="card card-primary shadow mb-3">
               <div class="card-header"><h4>User Registration</h4></div>
 
               <div class="card-body">

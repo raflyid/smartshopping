@@ -11,7 +11,7 @@ class Auth extends CI_Controller
     public function index()
     {
         if($this->session->userdata('email')) {
-          redirect('coordinator');
+          redirect('partner');
         }
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
