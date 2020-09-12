@@ -100,7 +100,7 @@ class Menu extends CI_Controller
         }
     }
 
-    public function editSubMenu() {
+    public function editsubMenu() {
         $data['title'] = 'Edit Sub-Menu';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
         $this->load->model('Menu_model', 'menu');
@@ -117,7 +117,7 @@ class Menu extends CI_Controller
             $this->load->view('master/header', $data);
             $this->load->view('master/sidebar', $data);
             $this->load->view('master/menubar', $data);
-            $this->load->view('menu/editsubmenu', $data);
+            $this->load->view('menu/submenu', $data);
             $this->load->view('master/footer');
         } else {
             $id = $this->input->post('id');

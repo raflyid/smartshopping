@@ -28,7 +28,7 @@ class Admin extends CI_Controller
     // ROLE CONT
 
     public function role() {
-        $data['title'] = 'Role';
+        $data['title'] = 'Role Changer';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['role'] = $this->db->get('users_role')->result_array();
@@ -122,5 +122,50 @@ class Admin extends CI_Controller
         redirect('admin/role');
     }
 
+    public function manageUsers() {
+        $data['title'] = 'Manage Users';
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['users'] = $this->db->get('users')->result_array();
+
+        $this->form_validation->set_rules('role', 'Role', 'required');
+        if ($this->form_validation->run() == false) {
+            $this->load->view('master/header', $data);
+            $this->load->view('master/sidebar', $data);
+            $this->load->view('master/menubar', $data);
+            $this->load->view('admin/manage-users', $data);
+            $this->load->view('master/footer');
+        } else {
+            $data = [
+                'role' => $this->input->post('role')
+            ];
+
+        $this->db->update('users', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Users berhasil diupdate!</div>');
+        redirect('admin/manageusers');
+        }
+    }
+
+    public function items()
+    {
+        $data['title'] = 'Items Database';
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['menu'] = $this->db->get('users_menu')->result_array();
+
+        $this->form_validation->set_rules('menu', 'Menu', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('master/header', $data);
+            $this->load->view('master/sidebar', $data);
+            $this->load->view('master/menubar', $data);
+            $this->load->view('admin/items', $data);
+            $this->load->view('master/footer');
+        } else {
+            $this->db->insert('users_menu', ['menu' => $this->input->post('menu')]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu berhasil ditambahkan!</div>');
+            redirect('menu');
+        }
+    }
     
 }

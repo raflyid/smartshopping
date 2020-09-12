@@ -8,6 +8,7 @@
           <div class="section-body">
             <div class="col-12 col-md-12 col-sm-12 col-lg-6">
               <div class="card-body">
+              <?= $this->session->flashdata('message'); ?>
                     <div class="section-title mt-0">Profile</div>
                     <div class="form-group">
                       <label>Fullname</label>

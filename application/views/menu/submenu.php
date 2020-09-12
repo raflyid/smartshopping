@@ -96,6 +96,7 @@
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="icon" name="icon" placeholder="Submenu Icon">
+                        <small><a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome Icons</a></small>
                     </div>
 
                     <div class="form_group">
@@ -141,7 +142,7 @@
 
                     <div class="form-group">
                         <select name="menu_id" id="menu_id" class="form-control" >
-                            <option value="" disabled="" selected=""><?= $m['menu']; ?></option>
+                            <option value="" disabled="" selected="">Select Category</option>
                             <?php foreach($menu as $m) : ?>
                             <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
                             <?php endforeach; ?>
@@ -154,6 +155,7 @@
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="icon" name="icon" value="<?= $sm['icon']; ?>">
+                        <small><a href="https://fontawesome.com/icons?d=gallery" target="_blank">Fontawesome Icons</a></small>
                     </div>
 
                     <div class="form_group">

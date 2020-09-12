@@ -8,6 +8,10 @@
               
             </div>
             <?= $this->session->flashdata('message'); ?>
+
+            <div class="d-flex justify-content-center">
+              <img style="width: 270px; height:260px" src="<?= base_url('vendor/images/header.png') ?> ">
+            </div>
             
             <div class="card card-primary shadow mb-3">
               <div class="card-header"><h4>Login</h4></div>

@@ -9,6 +9,7 @@
             <div class="col-12 col-md-12 col-sm-12 col-lg-6">
               <div class="card-body">
               <?= form_open_multipart('partner/edit'); ?>
+              <?= $this->session->flashdata('message'); ?>
                     <div class="section-title mt-0">Edit Profile</div>
                     <div class="form-group">
                       <label>Fullname</label>
@@ -26,7 +27,8 @@
                       <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
 
-                   <button type="submit" class="btn btn-primary">Edit profile</button>
+                    <a href="<?= base_url('partner')?>" class="btn btn-danger">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Submit</button>
 
                 </div>
             </div>

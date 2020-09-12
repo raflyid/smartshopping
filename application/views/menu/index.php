@@ -27,7 +27,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Menu</th>
-                                <th scope="col">Action</th>
+                                <!-- <th scope="col">Action</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -36,10 +36,10 @@
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $m['menu'] ?></td>
-                                <td>
+                                <!-- <td>
                                     <a href="" class="badge badge-info" data-toggle="modal" data-target="#neweditMenu<?= $m['id'] ?>">edit</a>
                                     <a href="<?= base_url('menu/deletemenu/'.$m['id']); ?>" class="badge badge-danger">delete</a>
-                                </td>
+                                </td> -->
                             </tr>
                             <?php $i++; ?>
                             <?php endforeach; ?>

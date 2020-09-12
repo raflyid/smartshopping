@@ -12,10 +12,10 @@
         <ul class="navbar-nav navbar-right">
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img class="rounded-circle mr-1" src="<?= base_url('vendor/dist/assets/img/avatar/avatar-1.png') ?> ">
-            <div class="d-sm-none d-lg-inline-block">Hi, Admin</div></a>
+            <div class="d-sm-none d-lg-inline-block">Hi, <?= $user['fullname']; ?></div></a>
             <div class="dropdown-menu dropdown-menu-right">
               
-              <a href="features-profile.html" class="dropdown-item has-icon">
+              <a href="<?= base_url('partner') ?>" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
               </a>
               <div class="dropdown-divider"></div>
