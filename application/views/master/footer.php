@@ -20,6 +20,10 @@
   
   <!-- JS Libraies -->
 
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+
   <!-- Page Specific JS File -->
   
   <!-- Template JS File -->

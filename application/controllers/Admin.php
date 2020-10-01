@@ -125,8 +125,9 @@ class Admin extends CI_Controller
     public function manageUsers() {
         $data['title'] = 'Manage Users';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Users_model');
 
-        $data['users'] = $this->db->get('users')->result_array();
+        $data['users'] = $this->Users_model->getRoleUsers();
 
         $this->form_validation->set_rules('role', 'Role', 'required');
         if ($this->form_validation->run() == false) {
@@ -146,25 +147,24 @@ class Admin extends CI_Controller
         }
     }
 
-    public function items()
+    public function products()
     {
-        $data['title'] = 'Items Database';
+        $data['title'] = 'Products Database';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->model('Products_model');
 
-        $data['menu'] = $this->db->get('users_menu')->result_array();
+        $data['products'] = $this->Products_model->getItems();
 
-        $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $data['category'] = $this->db->get('categories')->result_array();
+
+        // $this->form_validation->set_rules('menu', 'Menu', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('master/header', $data);
             $this->load->view('master/sidebar', $data);
             $this->load->view('master/menubar', $data);
-            $this->load->view('admin/items', $data);
+            $this->load->view('admin/products', $data);
             $this->load->view('master/footer');
-        } else {
-            $this->db->insert('users_menu', ['menu' => $this->input->post('menu')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu berhasil ditambahkan!</div>');
-            redirect('menu');
         }
     }
     

@@ -33,7 +33,8 @@
                                 <th scope="col">Password</th>
                                 <th scope="col">Fullname</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col">Active?<small style="color: blue;"> 1 means active</small></th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Active<small style="color: blue;"><a href="#" title="" data-toggle="popover" data-trigger="hover" data-content="Users Active == 1 / Non-active == 0." data-original-title="What is this means?"><i class="fas fa-question-circle"></i></a></small></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,6 +46,7 @@
                                 <td><?= $usr['password'] ?></td>
                                 <td><?= $usr['fullname'] ?></td>
                                 <td><?= $usr['phone'] ?></td>
+                                <td><?= $usr['role'] ?></td>
                                 <td><?= $usr['is_active'] ?></td>
                             </tr>
                             <?php $i++; ?>

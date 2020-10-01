@@ -66,6 +66,9 @@
              <div class="mt-5 text-muted text-center">
               Already have an account? <a href="<?= base_url('auth')?>">Login</a>
             </div>
+            <div class="simple-footer">
+              Copyright &copy; Smart Shopping 2020
+            </div>
           </div>
         </div>
       </div>
