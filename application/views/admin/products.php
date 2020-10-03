@@ -13,7 +13,9 @@
                 <div class="alert alert-danger" role="alert"><?= validation_errors(); ?></div>
               <?php endif; ?>
 
-              <?= $this->session->flashdata('message'); ?>
+              <!-- <?= $this->session->flashdata('message'); ?> -->
+              
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 
                 <div class="card card-primary shadow mb-3">
                   <div class="card-header">
@@ -25,14 +27,16 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    <table class="table table-hover">
+                    <table id="dataTables" class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Partner</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Product Name</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Ext. Info</th>
+                                <th scope="col">Stock</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Image 1</th>
                                 <th scope="col">Image 2</th>
@@ -44,10 +48,12 @@
                             <?php foreach ($products as $p) : ?>
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
+                                <td><?= $p['fullname'] ?></td>
                                 <td><?= $p['category_name'] ?></td>
                                 <td><?= $p['product_name'] ?></td>
                                 <td><?= $p['description'] ?></td>
                                 <td><?= $p['product_info'] ?></td>
+                                <td><?= $p['stock'] ?></td>
                                 <td><?= $p['price'] ?></td>
                                 <td><?= $p['image_1'] ?></td>
                                 <td><?= $p['image_2'] ?></td>
@@ -76,9 +82,10 @@
                 </button>
               </div>
 
-              <form action="<?= base_url('admin/products'); ?>" method="post">
+              <?php echo form_open_multipart('admin/products'); ?>
                 <div class="modal-body">
-                    <div class="form-group">
+                    <input type="hidden" id="id_user" name="id_user" value="<?= $user['id_user']; ?>">
+                    <div class="form-group" data-toggle="tooltip">
                         <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Product Name">
                     </div>
 
@@ -92,12 +99,18 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Description of the product ...">
+                        <textarea type="text" class="form-control" id="description" name="description" placeholder="Description of the product ..."></textarea>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="product_info" name="product_info" placeholder="Extra Information">
-                        <small>Eg. Brand New In Box, Brand New Out Box, Refurbish, etc..</small>
+                    <select name="product_info" id="product_info" class="form-control" required>
+                        <option value="" selected disabled>Choose</option>
+                        <option value="Brand New In Box">Brand New In Box (BNIB)</option>
+                        <option value="Brand New Out Box">Brand New Out Box (BNOB)</option>
+                        <option value="Refurbished">Refurbished</option>
+                        <option value="Second Hand">Second Hand</option>
+                        <option value="Others">Others (Explain in your Description)</option>
+                    </select>
                     </div>
 
                     <div class="form-group">
@@ -110,7 +123,9 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Add New Products</button>
                 </div>
+
               </form>
             </div>
           </div>
         </div>
+

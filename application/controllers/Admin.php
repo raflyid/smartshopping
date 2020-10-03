@@ -7,8 +7,8 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
-    //     // $this->load->model('');
-    //     // $this->load->model('');
+        $this->load->model('Products_model');
+        $this->load->model('Users_model');
         $this->load->helper('form');
         $this->load->helper('url');
     }
@@ -46,7 +46,7 @@ class Admin extends CI_Controller
             ];
 
         $this->db->insert('users_role', $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Roles berhasil diupdate!</div>');
+        $this->session->set_flashdata('message', 'Role berhasil ditambahkan!');
         redirect('admin/role');
         }
     }
@@ -72,7 +72,7 @@ class Admin extends CI_Controller
 
             $this->db->where('id', $id);
             $this->db->update('users_role', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Roles berhasil edit!</div>');
+            $this->session->set_flashdata('message', 'Role berhasil diubah!');
             redirect('admin/role');
         }
     }
@@ -110,14 +110,14 @@ class Admin extends CI_Controller
             $this->db->delete('users_access_menu', $data);
         }
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Role Access Changed!</div>');
+        $this->session->set_flashdata('message', 'Role Access berhasil diubah!');
     }
 
      public function deleteRole() {
         $id = $this->uri->segment(3);
         $this->db->where('id',$id);
         $this->db->delete('users_role');
-        $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Role berhasil dihapus!</div>');
+        $this->session->set_flashdata('message','Role berhasil dihapus!');
 
         redirect('admin/role');
     }
@@ -125,39 +125,30 @@ class Admin extends CI_Controller
     public function manageUsers() {
         $data['title'] = 'Manage Users';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->model('Users_model');
 
         $data['users'] = $this->Users_model->getRoleUsers();
 
-        $this->form_validation->set_rules('role', 'Role', 'required');
-        if ($this->form_validation->run() == false) {
-            $this->load->view('master/header', $data);
-            $this->load->view('master/sidebar', $data);
-            $this->load->view('master/menubar', $data);
-            $this->load->view('admin/manage-users', $data);
-            $this->load->view('master/footer');
-        } else {
-            $data = [
-                'role' => $this->input->post('role')
-            ];
+        $this->load->view('master/header', $data);
+        $this->load->view('master/sidebar', $data);
+        $this->load->view('master/menubar', $data);
+        $this->load->view('admin/manage-users', $data);
+        $this->load->view('master/footer');
 
-        $this->db->update('users', $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Users berhasil diupdate!</div>');
-        redirect('admin/manageusers');
-        }
     }
 
     public function products()
     {
         $data['title'] = 'Products Database';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->model('Products_model');
 
         $data['products'] = $this->Products_model->getItems();
-
         $data['category'] = $this->db->get('categories')->result_array();
 
-        // $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $this->form_validation->set_rules('product_name', 'ProductName', 'required');
+        $this->form_validation->set_rules('id_category', 'Category', 'required');
+        $this->form_validation->set_rules('description', 'Desc', 'required');
+        $this->form_validation->set_rules('product_info', 'ProductInfo', 'required');
+        $this->form_validation->set_rules('price', 'Price', 'required');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('master/header', $data);
@@ -165,6 +156,19 @@ class Admin extends CI_Controller
             $this->load->view('master/menubar', $data);
             $this->load->view('admin/products', $data);
             $this->load->view('master/footer');
+        } else { 
+            $data = [
+                'id_user' => $this->input->post('id_user'),
+                'id_category' => $this->input->post('id_category'),
+                'product_name' => $this->input->post('product_name'),
+                'description' => $this->input->post('description'),
+                'product_info' => $this->input->post('product_info'),
+                'price' => $this->input->post('price')
+            ];
+
+            $this->db->insert('products', $data);
+            $this->session->set_flashdata('message', 'Data Product berhasil ditambahkan!');
+            redirect('admin/products');
         }
     }
     

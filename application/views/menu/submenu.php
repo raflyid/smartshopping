@@ -13,7 +13,9 @@
                 <div class="alert alert-danger" role="alert"><?= validation_errors(); ?></div>
               <?php endif; ?>
 
-              <?= $this->session->flashdata('message'); ?>
+              <!-- <?= $this->session->flashdata('message'); ?> -->
+
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 
                 <div class="card card-primary shadow mb-3">
                   <div class="card-header">
@@ -49,7 +51,7 @@
                                 <td><?= $sm['is_active'] ?></td>
                                 <td>
                                     <a href="" class="badge badge-info" data-toggle="modal" data-target="#neweditSubMenu<?= $sm['id'] ?>">edit</a>
-                                    <a href="<?= base_url('menu/deletesubmenu/'.$sm['id']); ?>" class="badge badge-danger">delete</a>
+                                    <a href="<?= base_url('menu/deletesubmenu/'.$sm['id']); ?>" class="badge badge-danger btn-delete">delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

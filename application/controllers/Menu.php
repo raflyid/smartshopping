@@ -7,6 +7,9 @@ class Menu extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        $this->load->model('Menu_model', 'menu');
+        $this->load->helper('form');
+        $this->load->helper('url');
     }
 
     public function index()
@@ -26,7 +29,7 @@ class Menu extends CI_Controller
             $this->load->view('master/footer');
         } else {
             $this->db->insert('users_menu', ['menu' => $this->input->post('menu')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu berhasil ditambahkan!</div>');
+            $this->session->set_flashdata('message', 'Menu berhasil ditambahkan!');
             redirect('menu');
         }
     }
@@ -52,7 +55,7 @@ class Menu extends CI_Controller
 
             $this->db->where('id', $id);
             $this->db->update('users_menu', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu berhasil edit!</div>');
+            $this->session->set_flashdata('message', '< class="alert alert-success" role="alert">Menu berhasil edit!</>');
             redirect('menu');
         }
     }
@@ -70,7 +73,6 @@ class Menu extends CI_Controller
     {
         $data['title'] = 'Manage Sub-menu';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->model('Menu_model', 'menu');
 
         $data['subMenu'] = $this->menu->getSubMenu();
         $data['menu'] = $this->db->get('users_menu')->result_array();
@@ -95,7 +97,7 @@ class Menu extends CI_Controller
                 'is_active' => $this->input->post('is_active')
             ];
             $this->db->insert('users_sub_menu', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub-Menu berhasil ditambahkan!</div>');
+            $this->session->set_flashdata('message', 'Sub-Menu berhasil ditambahkan!');
             redirect('menu/submenu');
         }
     }
@@ -131,7 +133,7 @@ class Menu extends CI_Controller
 
             $this->db->where('id', $id);
             $this->db->update('users_sub_menu', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Sub-Menu berhasil edit!</div>');
+            $this->session->set_flashdata('message', 'Sub-Menu berhasil diubah!');
             redirect('menu/submenu');
         }
     }
@@ -140,7 +142,7 @@ class Menu extends CI_Controller
         $id = $this->uri->segment(3);
         $this->db->where('id',$id);
         $this->db->delete('users_sub_menu');
-        $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Sub-Menu berhasil dihapus!</div>');
+        $this->session->set_flashdata('message','Sub-Menu berhasil dihapus!');
 
         redirect('menu/submenu');
     }

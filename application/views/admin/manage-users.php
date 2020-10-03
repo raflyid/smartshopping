@@ -13,7 +13,8 @@
                 <div class="alert alert-danger" role="alert"><?= validation_errors(); ?></div>
               <?php endif; ?>
 
-              <?= $this->session->flashdata('message'); ?>
+              <!-- <?= $this->session->flashdata('message'); ?> -->
+              <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
 
                 <div class="card card-primary shadow mb-3">
                   <div class="card-header">
@@ -43,7 +44,7 @@
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $usr['email'] ?></td>
-                                <td><?= $usr['password'] ?></td>
+                                <td class="hidetext"><?= $usr['password'] ?></td>
                                 <td><?= $usr['fullname'] ?></td>
                                 <td><?= $usr['phone'] ?></td>
                                 <td><?= $usr['role'] ?></td>
