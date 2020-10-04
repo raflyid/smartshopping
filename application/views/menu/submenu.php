@@ -50,7 +50,7 @@
                                 <td><?= $sm['icon'] ?></td>
                                 <td><?= $sm['is_active'] ?></td>
                                 <td>
-                                    <a href="" class="badge badge-info" data-toggle="modal" data-target="#neweditSubMenu<?= $sm['id'] ?>">edit</a>
+                                    <a href="" class="badge badge-primary" data-toggle="modal" data-target="#neweditSubMenu<?= $sm['id'] ?>">edit</a>
                                     <a href="<?= base_url('menu/deletesubmenu/'.$sm['id']); ?>" class="badge badge-danger btn-delete">delete</a>
                                 </td>
                             </tr>

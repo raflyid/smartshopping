@@ -47,6 +47,7 @@
                         <tbody>
                             <?php $i = 1; ?>
                             <?php foreach ($products as $p) : ?>
+                            <input type="hidden" id="id" name="id" value="<?= $p['id']; ?>">
                             <tr>
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $p['fullname'] ?></td>
@@ -58,7 +59,7 @@
                                 <td><?= $p['price'] ?></td>
                                 <td class="text-center"><img src="<?= $p['image_1'] ?>" width="66px" height="64px"></td>
                                 <td class="text-center"><img src="<?= $p['image_2'] ?>" width="66px" height="64px"></td>
-                                <td class="text-center"><img src="<?= $p['qr_code'] ?>" width="66px" height="64px"></td>
+                                <td class="text-center"><img src="<?php echo site_url('admin/qrcode/'.$p['id']); ?>" width="66px" height="64px"></td>
                                 <td>
                                   <a href="" class="badge badge-primary" data-toggle="modal" data-target="#neweditProduct<?= $p['id'] ?>">edit</a>
                                   <a href="<?= base_url('admin/delproducts/'.$p['id']); ?>" class="badge badge-danger btn-delete">delete</a>

@@ -11,6 +11,7 @@ class Admin extends CI_Controller
         $this->load->model('Users_model');
         $this->load->helper('form');
         $this->load->helper('url');
+        $this->load->library('Ciqrcode');
     }
 
     public function index()
@@ -187,6 +188,18 @@ class Admin extends CI_Controller
         $this->db->delete('products');
         $this->session->set_flashdata('message','Product kamu berhasil dihapus!');
         redirect('admin/products');
+    }
+
+    public function QRcode($qr) {
+        // $data['products'] = $this->Products_model->getItems();
+        // $data['category'] = $this->db->get('categories')->result_array();
+        QRcode::png(
+            $qr,
+            $outfile = false,
+            $level = QR_ECLEVEL_H,
+            $size = 10,
+            $margin = 1
+        );
     }
     
 }

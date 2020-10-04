@@ -24,6 +24,7 @@
   <script src="<?= base_url('vendor/dist/'); ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
   <script src="<?= base_url('vendor/dist/'); ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
   <script type="text/javascript" src="<?= base_url('vendor/dist/'); ?>assets/js/datatables/datatables.min.js"></script>
+  
 
   <script>
   $(function () {
