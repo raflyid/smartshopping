@@ -64,7 +64,7 @@ class Menu extends CI_Controller
         $id = $this->uri->segment(3);
         $this->db->where('id',$id);
         $this->db->delete('users_menu');
-        $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>Menu berhasil dihapus!</div>');
+        $this->session->set_flashdata('message','Menu berhasil dihapus!');
 
         redirect('menu');
     }

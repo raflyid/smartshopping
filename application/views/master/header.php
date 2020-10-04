@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="<?= base_url('vendor/dist/'); ?>assets/modules/datatables/datatables.min.css">
   <link rel="stylesheet" href="<?= base_url('vendor/dist/'); ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?= base_url('vendor/dist/'); ?>assets/modules/datatables/Select-1.2.4/css/select.bootstrap4.min.css">
+  <link rel="stylesheet" type="text/css" href="<?= base_url('vendor/dist/'); ?>assets/js/datatables.min.css"/>
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url('vendor/dist/'); ?>assets/css/style.css">

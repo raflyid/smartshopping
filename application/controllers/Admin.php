@@ -157,19 +157,36 @@ class Admin extends CI_Controller
             $this->load->view('admin/products', $data);
             $this->load->view('master/footer');
         } else { 
+            $serverip = gethostbyname(gethostname());
+            $upload1 = $this->Products_model->uploadImage();
+            $upload2 = $this->Products_model->uploadImage_2();
+            $image1 = $upload1['file']['file_name'];
+            $image2 = $upload2['file']['file_name'];
+            $upload_image1 =  'http://' . $serverip . '/smartshopping/resources/product_image/' . $image1;
+            $upload_image2 =  'http://' . $serverip . '/smartshopping/resources/product_image/' . $image2;
             $data = [
                 'id_user' => $this->input->post('id_user'),
                 'id_category' => $this->input->post('id_category'),
                 'product_name' => $this->input->post('product_name'),
                 'description' => $this->input->post('description'),
                 'product_info' => $this->input->post('product_info'),
-                'price' => $this->input->post('price')
+                'price' => $this->input->post('price'),
+                'image_1' => $upload_image1,
+                'image_2' => $upload_image2
             ];
 
             $this->db->insert('products', $data);
             $this->session->set_flashdata('message', 'Data Product berhasil ditambahkan!');
             redirect('admin/products');
         }
+    }
+
+    public function delProducts() {
+        $id = $this->uri->segment(3);
+        $this->db->where('id',$id);
+        $this->db->delete('products');
+        $this->session->set_flashdata('message','Product kamu berhasil dihapus!');
+        redirect('admin/products');
     }
     
 }

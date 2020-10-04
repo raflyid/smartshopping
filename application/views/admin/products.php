@@ -41,6 +41,7 @@
                                 <th scope="col">Image 1</th>
                                 <th scope="col">Image 2</th>
                                 <th scope="col">QR Code</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,9 +56,13 @@
                                 <td><?= $p['product_info'] ?></td>
                                 <td><?= $p['stock'] ?></td>
                                 <td><?= $p['price'] ?></td>
-                                <td><?= $p['image_1'] ?></td>
-                                <td><?= $p['image_2'] ?></td>
-                                <td><?= $p['qr_code'] ?></td>
+                                <td class="text-center"><img src="<?= $p['image_1'] ?>" width="66px" height="64px"></td>
+                                <td class="text-center"><img src="<?= $p['image_2'] ?>" width="66px" height="64px"></td>
+                                <td class="text-center"><img src="<?= $p['qr_code'] ?>" width="66px" height="64px"></td>
+                                <td>
+                                  <a href="" class="badge badge-primary" data-toggle="modal" data-target="#neweditProduct<?= $p['id'] ?>">edit</a>
+                                  <a href="<?= base_url('admin/delproducts/'.$p['id']); ?>" class="badge badge-danger btn-delete">delete</a>
+                                </td>
                             </tr>
                             <?php $i++; ?>
                             <?php endforeach; ?>
@@ -115,6 +120,16 @@
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                    </div>
+
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image_1" name="image_1" placeholder="First Image">
+                      <label class="custom-file-label" for="customFile">Choose image</label>
+                    </div><br><br>
+
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="image_2" name="image_2" placeholder="Second Image">
+                      <label class="custom-file-label" for="customFile">Choose image</label>
                     </div>
 
                   </div>
