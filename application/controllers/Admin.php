@@ -142,7 +142,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Products Database';
         $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['products'] = $this->Products_model->getItems();
+        $data['products'] = $this->Products_model->getProducts();
         $data['category'] = $this->db->get('categories')->result_array();
 
         $this->form_validation->set_rules('product_name', 'ProductName', 'required');

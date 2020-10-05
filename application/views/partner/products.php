@@ -59,10 +59,10 @@
                                 <td><?= $p['price'] ?></td>
                                 <td class="text-center"><img src="<?= $p['image_1'] ?>" width="66px" height="64px"></td>
                                 <td class="text-center"><img src="<?= $p['image_2'] ?>" width="66px" height="64px"></td>
-                                <td class="text-center"><img src="<?php echo site_url('admin/qrcode/'.$p['id']); ?>" width="66px" height="64px"></td>
+                                <td class="text-center"><img src="<?php echo site_url('partner/qrcode/'.$p['id']); ?>" width="66px" height="64px"></td>
                                 <td>
                                   <a href="" class="badge badge-primary" data-toggle="modal" data-target="#neweditProduct<?= $p['id'] ?>">edit</a>
-                                  <a href="<?= base_url('admin/delproducts/'.$p['id']); ?>" class="badge badge-danger btn-delete">delete</a>
+                                  <a href="<?= base_url('partner/delproducts/'.$p['id']); ?>" class="badge badge-danger btn-delete">delete</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
@@ -88,7 +88,7 @@
                 </button>
               </div>
 
-              <?php echo form_open_multipart('admin/products'); ?>
+              <?php echo form_open_multipart('partner/products'); ?>
                 <div class="modal-body">
                     <input type="hidden" id="id_user" name="id_user" value="<?= $user['id_user']; ?>">
                     <div class="form-group" data-toggle="tooltip">
